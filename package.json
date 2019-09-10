@@ -10,8 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ionicserve": "ionic serve -b -p 8100 --address 0.0.0.0 --no-open",
-    "ioniclab": "npm run ionicserve --lab"
+    "ionicserve": "ionic serve --address=0.0.0.0 -l --no-open",
+    "ioniclab": "ionic serve --address=0.0.0.0 --lab --no-open --lab-host=0.0.0.0"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +46,7 @@
     "@angular/language-service": "~8.1.2",
     "@ionic/angular-toolkit": "~2.0.0",
     "@ionic/app-scripts": "^3.2.4",
+    "@ionic/lab": "2.0.10",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
