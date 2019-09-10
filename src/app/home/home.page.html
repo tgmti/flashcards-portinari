@@ -7,18 +7,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-
+  <!-- <div class="ion-padding"> -->
     <ion-list>
       <ion-list-header>
-        Navigate
+        <ion-label>Flashcards</ion-label>
       </ion-list-header>
-      <h3 *ngFor="let flashcard of flashcards | async ">
-        {{ flashcard.title }}
-      </h3>
+      <ion-item *ngFor="let flashcard of flashcards ">
+        <ion-label>{{ flashcard.title }}</ion-label>
+      </ion-item>
     </ion-list>
 
-  </div>
 </ion-content>

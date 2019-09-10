@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { FlashcardsService } from 'src/services/flashcards.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,12 +9,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  flashcards = [
-    {title: "teste"},
-    {title: "teste2"},
-    {title: "teste3"},
-  ]
+  flashcards
 
-  constructor() {}
-
+  constructor(
+    service: FlashcardsService
+  ) {
+    this.flashcards = service.getFlashcards();
+  }
 }
