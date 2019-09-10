@@ -11,7 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "ionicserve": "ionic serve --address=0.0.0.0 -l --no-open",
-    "ioniclab": "ionic serve --address=0.0.0.0 --lab --no-open --lab-host=0.0.0.0"
+    "ioniclab": "ionic serve --address=0.0.0.0 --lab --no-open --lab-host=0.0.0.0",
+    "docker": "docker-compose up -d && docker-compose exec ionic-dev bash"
   },
   "private": true,
   "dependencies": {
