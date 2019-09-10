@@ -4,17 +4,17 @@ services:
 
   ionic-dev:
     image: tgmti/portinari-ionic
-    ports: 
+    ports:
       - 8100:8100
       - 8200:8200
       - 4200:4200
-    volumes: 
-      - app:/app
+    volumes:
+      - .:/app
     entrypoint: bash
     tty: true
-    environment: 
+    environment:
       - INIT_IONIC_SERVER=false
       - INIT_IONIC_LAB=false
- 
-volumes: 
+
+volumes:
   app:
