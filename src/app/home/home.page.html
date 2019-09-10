@@ -12,7 +12,7 @@
       <ion-list-header>
         <ion-label>Flashcards</ion-label>
       </ion-list-header>
-      <ion-item *ngFor="let flashcard of flashcards ">
+      <ion-item *ngFor="let flashcard of flashcards | async ">
         <ion-label>{{ flashcard.title }}</ion-label>
       </ion-item>
     </ion-list>

@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class FlashcardsService {
 
-  constructor() {
+  private collectionName = 'flashcards';
+  private collection: any;
 
+  constructor(private db: AngularFirestore) {
+    this.collection = db.collection(this.collectionName);
   }
 
   public getFlashcards() {
-    return [
-      {title: "teste"},
-      {title: "teste2"},
-      {title: "teste3"},
-    ];
+    return this.collection.valueChanges();
   }
 }

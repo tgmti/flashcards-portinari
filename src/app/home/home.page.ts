@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { FlashcardsService } from 'src/services/flashcards.service';
 
@@ -9,7 +10,7 @@ import { FlashcardsService } from 'src/services/flashcards.service';
 })
 export class HomePage {
 
-  flashcards
+  flashcards: Observable<any[]>;
 
   constructor(
     service: FlashcardsService
