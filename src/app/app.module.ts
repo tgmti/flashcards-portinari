@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 
 import { FlashcardsService } from './../services/flashcards.service';
+import { QuestionsService } from 'src/services/questions.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { FlashcardsService } from './../services/flashcards.service';
     StatusBar,
     SplashScreen,
     FlashcardsService,
+    QuestionsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

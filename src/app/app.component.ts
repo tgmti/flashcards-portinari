@@ -12,10 +12,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  title = 'Home';
   pages = [
     { title: 'Home', route: 'home', icon: 'home' },
-    { title: 'Responder', route: 'answers', icon: 'paper' },
-    { title: 'Cadastro', route: 'flashcards', icon: 'paper' },
+    { title: 'Responder Perguntas', route: 'answers', icon: 'paper' },
+    { title: 'Cadastro de Perguntas', route: 'flashcards', icon: 'paper' },
   ];
 
   constructor(
@@ -38,6 +39,7 @@ export class AppComponent {
   }
 
   openPage(page: any) {
+    this.title = page.title;
     this.router.navigate(['/', page.route])
   }
 

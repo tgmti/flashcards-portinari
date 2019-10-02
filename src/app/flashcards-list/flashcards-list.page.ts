@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { FlashcardsService } from 'src/services/flashcards.service';
 
@@ -15,6 +16,6 @@ export class FlashcardsListPage {
   constructor(
     service: FlashcardsService
   ) {
-    this.flashcards = service.getFlashcards();
+    this.flashcards = service.getFlashcards().pipe( tap( x => console.log(x) ) );
   }
 }
