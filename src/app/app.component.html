@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    
+  <ion-menu menuId="flashcardsMenu" class="dark" side="start" content-id="content">
+    <ion-header color="dark" >
+        <ion-toolbar color="dark">
+            <ion-title>Left Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content padding color="dark" >
+      <ion-list color="dark">
+        <ion-item color="dark" *ngFor="let page of pages" >
+            <button ion-item menuClose (click)="openPage(page)">
+              <ion-icon item-start [name]="page.icon" [color]="isActive(page)"></ion-icon>
+              {{ page.title }}
+            </button>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="content"></ion-router-outlet>
 </ion-app>
