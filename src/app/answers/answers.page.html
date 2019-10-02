@@ -1,77 +1,22 @@
-<ion-header color="dark" >
-  <ion-toolbar color="dark">
-    <ion-title>
-      Responder Perguntas
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-card *ngFor="let question of questions | async" >
+  <ion-card-header color="dark">
+    {{ question.title }}
+  </ion-card-header>
 
-<ion-content>
-  <!-- <div class="ion-padding"> -->
-  <ion-list>
-    <ion-list-header>
-      <ion-label>Matérias</ion-label>
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Gestão da Qualidade</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Gestão de Projetos de Software</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Gestão de Mapeamento de Processos</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card-content>
+    <p>{{ question.description }}</p>
+    <hr>
+    
+    <ion-list>
+      <ion-item  *ngFor="let answer of question.answers" >
+        <button ion-item color="dark">
+          <p>{{ answer.description }}</p>
+        </button>
+      </ion-item>
+      <hr>
+    </ion-list>
 
-  <ion-card >
-    <ion-card-header>
-      <span>Titulo Pergunta</span>
-      <span>Acertos</span>
-      <span>Erros</span>
-    </ion-card-header>
-    <ion-card-content>
-      <p>A - O escritório de processos é considerado uma estrutura organizacional que padroniza os processos de governança promovendo e estruturando a governança por processos para que ela seja internalizada na organização. O que é governança de BPM?</p>
-      
-      <ion-list>
-        <ion-item>
-          <button ion-item color="dark">
-           <p>
-             A - Governança de BPM diz respeito à definição de diretrizes e regras para a condução das ações de BPM e a consequente determinação de responsabilidades e autoridades pelas ações dentro da organização.
-           </p>
-          </button>
-        </ion-item>
-        <ion-item>
-          <button ion-item color="dark">
-           <p>
-             A - Governança de BPM diz respeito à definição de diretrizes e regras para a condução das ações de BPM e a consequente determinação de responsabilidades e autoridades pelas ações dentro da organização.
-           </p>
-          </button>
-        </ion-item>
-        <ion-item>
-          <button ion-item color="dark">
-           <p>
-             A - Governança de BPM diz respeito à definição de diretrizes e regras para a condução das ações de BPM e a consequente determinação de responsabilidades e autoridades pelas ações dentro da organização.
-           </p>
-          </button>
-        </ion-item>
-        <ion-item>
-          <button ion-item color="dark">
-           <p>
-             A - Governança de BPM diz respeito à definição de diretrizes e regras para a condução das ações de BPM e a consequente determinação de responsabilidades e autoridades pelas ações dentro da organização.
-           </p>
-          </button>
-        </ion-item>
-        <ion-item>
-          <button ion-item color="dark">
-           <p>
-             A - Governança de BPM diz respeito à definição de diretrizes e regras para a condução das ações de BPM e a consequente determinação de responsabilidades e autoridades pelas ações dentro da organização.
-           </p>
-          </button>
-        </ion-item>
-      </ion-list>
+  </ion-card-content>
 
-    </ion-card-content>
+</ion-card>
 
-  </ion-card>
-
-</ion-content>

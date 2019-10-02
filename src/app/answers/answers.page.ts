@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { FlashcardsService } from 'src/services/flashcards.service';
+import { QuestionsService } from 'src/services/questions.service';
+import { QuestionModel } from 'src/models/question.model';
 
 @Component({
   selector: 'app-answers',
@@ -10,11 +11,11 @@ import { FlashcardsService } from 'src/services/flashcards.service';
 })
 export class AnswersPage {
 
-  flashcards: Observable<any[]>;
+  questions: Observable<QuestionModel[]>;
 
   constructor(
-    service: FlashcardsService
+    service: QuestionsService
   ) {
-    this.flashcards = service.getFlashcards();
+    this.questions = service.selectQuestionToAnswer();
   }
 }
