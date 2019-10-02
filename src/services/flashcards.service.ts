@@ -9,7 +9,7 @@ export class FlashcardsService {
   private collection: any;
 
   constructor(private db: AngularFirestore) {
-    this.collection = db.collection(this.collectionName);
+    this.collection = this.db.collection(this.collectionName);
   }
 
   public getFlashcards() {
