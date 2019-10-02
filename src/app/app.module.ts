@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 
 import { FlashcardsService } from './../services/flashcards.service';
 import { QuestionsService } from 'src/services/questions.service';
+import { AnswersService } from 'src/services/answers.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { QuestionsService } from 'src/services/questions.service';
   providers: [
     StatusBar,
     SplashScreen,
+    AnswersService,
     FlashcardsService,
     QuestionsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

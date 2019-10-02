@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AnswerModel } from 'src/models/answer.model';
+import { QuestionModel } from 'src/models/question.model';
 
 @Injectable()
 export class AnswersService {
@@ -22,15 +23,17 @@ export class AnswersService {
     return this.db.doc(id).get();
   }
 
-  public saveQuestion(question) {
-    let { questionId } = question
+  public async saveAnswer(questionId, selectedAnswer) {
  
-    if (questionId) {
-      return this.db.doc(questionId).set(question);
-    } else {
-      questionId = this.db.createId()
-      return this.collection().add({questionId, ...question});
-    }
+    this.db.doc<QuestionModel>(questionId).get()
+    .subscribe(question => {
+      const { answers } = question.data();
+      const correctAnswer = answers.find(answer =>  answer.correctAnswer);
+      const selectedCorrectAnswer = correctAnswer.answerId == selectedAnswer.answerId
+      
+      return this.collection().add({questionId, selectedCorrectAnswer});
+    });
+  
   }
 
   public selectQuestionToAnswer() {

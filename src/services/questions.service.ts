@@ -33,7 +33,4 @@ export class QuestionsService {
     }
   }
 
-  public selectQuestionToAnswer() {
-    return this.collection(ref => ref.limit(10)).valueChanges();
-  }
 }

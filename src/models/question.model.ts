@@ -4,6 +4,7 @@ export interface QuestionModel {
     description: string,
     answers: [
         {
+            answerId: string,
             description: string,
             correctAnswer: boolean,
         }

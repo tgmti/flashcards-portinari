@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { QuestionsService } from 'src/services/questions.service';
+import { AnswersService } from 'src/services/answers.service';
 import { QuestionModel } from 'src/models/question.model';
 
 @Component({
@@ -11,10 +11,10 @@ import { QuestionModel } from 'src/models/question.model';
 })
 export class AnswersPage {
 
-  questions: Observable<QuestionModel[]>;
+  questions: Observable<any>;
 
   constructor(
-    service: QuestionsService
+    service: AnswersService
   ) {
     this.questions = service.selectQuestionToAnswer();
   }
