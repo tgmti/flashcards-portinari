@@ -11,12 +11,12 @@ import { QuestionModel } from 'src/models/question.model';
 })
 export class AnswersPage {
 
-  questions: Observable<any>;
+  questions$: Observable<any>;
 
   constructor(
     private service: AnswersService
   ) {
-    this.questions = this.service.selectQuestionToAnswer();
+    this.questions$ = this.service.selectQuestionToAnswer();
   }
 
   loadQuestions() {

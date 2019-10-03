@@ -1,30 +1,35 @@
-<ion-card *ngFor="let question of questions | async" >
-  <ion-card-header color="dark">
-    {{ question.title }}
-  </ion-card-header>
+<div *ngIf="(questions$ | async)?.length; else loading">
 
-  <ion-card-content>
-    <p>{{ question.description }}</p>
-    <hr>
-        
-    <ion-list>
-      <ion-item  *ngFor="let answer of question.answers" >
-        <p>{{ answer.description }}</p>
-      </ion-item>
-      <hr>
-    </ion-list>
-
-    <po-radio-group
-      name="answer"
-      p-label="Resposta"
-      [p-options]="[{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }]">
-    </po-radio-group>
-    <!-- [p-options]="question.answers.map(ans => { label: 'A', value: ans.answerId })"> -->
+  <ion-card *ngFor="let question of questions$ | async" >
+    <ion-card-header color="dark">
+      {{ question.title }}
+    </ion-card-header>
     
-  </ion-card-content>
+    <ion-card-content>
+      <p>{{ question.description }}</p>
+      <hr>
+      
+      <ion-list>
+        <ion-item  *ngFor="let answer of question.answers" >
+          <p>{{ answer.description }}</p>
+        </ion-item>
+        <hr>
+      </ion-list>
+      
+      <po-radio-group
+        name="answer"
+        p-label="Resposta"
+        [p-options]="[{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }]">
+      </po-radio-group>
+      <!-- [p-options]="question.answers.map(ans => { label: 'A', value: ans.answerId })"> -->
+      
+    </ion-card-content>
+  
+  </ion-card>
+</div>
 
-</ion-card>
-
-<button (click)="loadQuestions()">
-    Load Questions
-</button>
+<ng-template #loading>
+  <button (click)="loadQuestions()">
+      Load Questions
+  </button>
+</ng-template>
