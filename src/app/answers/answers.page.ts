@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AnswersService } from 'src/services/answers.service';
-import { QuestionModel } from 'src/models/question.model';
+import { QuestionModel, QuestionModelId } from 'src/models/question.model';
 
 @Component({
   selector: 'app-answers',
@@ -11,12 +11,17 @@ import { QuestionModel } from 'src/models/question.model';
 })
 export class AnswersPage {
 
-  questions$: Observable<any>;
+  questions: QuestionModelId[];
 
   constructor(
     private service: AnswersService
   ) {
-    this.questions$ = this.service.selectQuestionToAnswer();
+    this.service.selectQuestionToAnswer().subscribe(questions => this.questions = questions);
+  }
+
+  formatOptions(options) {
+    console.log(options);
+    return options.map(opt => ({ label: opt.description, value: opt.answerId }));
   }
 
   loadQuestions() {

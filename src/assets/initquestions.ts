@@ -3,7 +3,7 @@ export const initQuestions = [
         "subjectId": "123",
         "title": "teste de pergunta", 
         "description": "Pergunta de teste",
-        "answers": [
+        "options": [
             {
                 "answerId": "123",
                 "description": "Resposta teste 1",
@@ -20,7 +20,7 @@ export const initQuestions = [
         "subjectId": "1222",
         "title": "teste de pergunta 2 ", 
         "description": "Pergunta de teste 2 ",
-        "answers": [
+        "options": [
             {
                 "answerId": "123",
                 "description": "Resposta teste 1.1",

@@ -35,7 +35,7 @@ export class AnswersService {
  
     this.db.doc<QuestionModel>(questionId).get()
     .subscribe(question => {
-      const { answers } = question.data();
+      const { } = question.data();
       const correctAnswer = answers.find(answer =>  answer.correctAnswer);
       const selectedCorrectAnswer = correctAnswer.answerId == selectedAnswer.answerId
       

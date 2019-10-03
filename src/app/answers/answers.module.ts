@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AnswersPage } from './answers.page';
-import { PoFieldModule } from '@portinari/portinari-ui';
+import { PoFieldModule, PoListViewModule } from '@portinari/portinari-ui';
 
 @NgModule({
   imports: [
@@ -13,6 +13,7 @@ import { PoFieldModule } from '@portinari/portinari-ui';
     FormsModule,
     IonicModule,
     PoFieldModule,
+    PoListViewModule,
     RouterModule.forChild([
       {
         path: '',

@@ -1,31 +1,24 @@
-<div *ngIf="(questions$ | async)?.length; else loading">
+<div *ngIf="questions && questions.length > 0; else loading">
 
-  <ion-card *ngFor="let question of questions$ | async" >
-    <ion-card-header color="dark">
-      {{ question.title }}
-    </ion-card-header>
-    
-    <ion-card-content>
-      <p>{{ question.description }}</p>
-      <hr>
-      
-      <ion-list>
-        <ion-item  *ngFor="let answer of question.answers" >
-          <p>{{ answer.description }}</p>
-        </ion-item>
-        <hr>
-      </ion-list>
-      
-      <po-radio-group
-        name="answer"
-        p-label="Resposta"
-        [p-options]="[{ label: 'Option 1', value: '1' }, { label: 'Option 2', value: '2' }]">
-      </po-radio-group>
-      <!-- [p-options]="question.answers.map(ans => { label: 'A', value: ans.answerId })"> -->
-      
-    </ion-card-content>
+  <po-list-view p-property-title="title"
+    [p-items]="questions">
   
-  </ion-card>
+    
+    <ng-template p-list-view-content-template let-item>
+      <p class="po-md-12" > {{ item.description }} </p>
+      <hr>
+      <div class="po-row">
+        <po-radio-group class="po-md-12" 
+          name="option"
+          p-label="Respostas"
+          p-columns="1"
+          [p-options]="formatOptions(item.options)">
+        </po-radio-group>
+      </div>
+    </ng-template>
+
+  </po-list-view>
+
 </div>
 
 <ng-template #loading>
