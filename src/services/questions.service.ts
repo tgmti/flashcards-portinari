@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { QuestionModel } from 'src/models/question.model';
+import { QuestionModel, QuestionModelId } from 'src/models/question.model';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class QuestionsService {
@@ -14,8 +16,14 @@ export class QuestionsService {
     return this.db.collection<QuestionModel>(this.collectionName, query);
   }
 
-  public getQuestions() {
-    return this.collection().valueChanges();
+  public getQuestions(): Observable<QuestionModelId[]> {
+    return this.collection().snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as QuestionModel;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   public getQuestion(id) {
@@ -23,13 +31,13 @@ export class QuestionsService {
   }
 
   public saveQuestion(question) {
-    let { questionId } = question
+    const { questionId } = question;
+    const questionData: QuestionModel = question;
  
     if (questionId) {
-      return this.db.doc(questionId).set(question);
+      return this.db.doc(questionId).set(questionData);
     } else {
-      questionId = this.db.createId()
-      return this.collection().add({questionId, ...question});
+      return this.collection().add(questionData).then(val => console.log(val));
     }
   }
 

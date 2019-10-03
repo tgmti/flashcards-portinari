@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+
 import { AnswerModel } from 'src/models/answer.model';
 import { QuestionModel } from 'src/models/question.model';
+import { QuestionsService } from './questions.service';
+
+import { initQuestions } from 'src/assets/initquestions';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class AnswersService {
 
   private readonly collectionName = 'answers';
 
-  constructor(private db: AngularFirestore) {
+  constructor(
+    private db: AngularFirestore,
+    private questionsService: QuestionsService,
+  ) {
   }
 
   private collection(query?): AngularFirestoreCollection {
@@ -37,6 +45,12 @@ export class AnswersService {
   }
 
   public selectQuestionToAnswer() {
-    return this.collection(ref => ref.limit(10)).valueChanges();
+    return this.questionsService.getQuestions().pipe(
+      tap(quests => console.log(quests))
+    ) // this.collection(ref => ref.limit(10)).valueChanges();
+  }
+
+  public loadQuestions() {
+    initQuestions.forEach(question => this.questionsService.saveQuestion(question) );
   }
 }

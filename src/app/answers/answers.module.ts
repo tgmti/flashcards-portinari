@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AnswersPage } from './answers.page';
+import { PoFieldModule } from '@portinari/portinari-ui';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    PoFieldModule,
     RouterModule.forChild([
       {
         path: '',

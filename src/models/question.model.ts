@@ -1,5 +1,5 @@
 export interface QuestionModel {
-    questionId: string,
+    subjectId: string,
     title: string, 
     description: string,
     answers: [
@@ -10,3 +10,5 @@ export interface QuestionModel {
         }
     ]
 }
+
+export interface QuestionModelId extends QuestionModel { id: string; }

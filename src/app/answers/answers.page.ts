@@ -14,8 +14,12 @@ export class AnswersPage {
   questions: Observable<any>;
 
   constructor(
-    service: AnswersService
+    private service: AnswersService
   ) {
-    this.questions = service.selectQuestionToAnswer();
+    this.questions = this.service.selectQuestionToAnswer();
+  }
+
+  loadQuestions() {
+    this.service.loadQuestions();
   }
 }

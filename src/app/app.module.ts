@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { FlashcardsService } from './../services/flashcards.service';
 import { QuestionsService } from 'src/services/questions.service';
 import { AnswersService } from 'src/services/answers.service';
+import { PoModule } from '@portinari/portinari-ui';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,8 @@ import { AnswersService } from 'src/services/answers.service';
     AngularFireModule.initializeApp(environment.firebase, 'flashcards-portinari'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    PoModule
   ],
   providers: [
     StatusBar,
