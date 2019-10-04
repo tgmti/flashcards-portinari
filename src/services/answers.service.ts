@@ -51,6 +51,14 @@ export class AnswersService {
   }
 
   public loadQuestions() {
-    initQuestions.forEach(question => this.questionsService.saveQuestion(question) );
+    // Incluir somente as matérias
+    initQuestions.forEach(subject => {
+      this.db.collection('subjects').add({ title: subject.subject }).then(value => console.log);
+    });
+
+    initQuestions.forEach(subject => {
+      const { questions, subjectId } = subject;
+      questions.forEach(question => this.questionsService.saveQuestion({subjectId, ...question}) );
+    });
   }
 }
