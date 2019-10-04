@@ -47,7 +47,7 @@ export class AnswersService {
   public selectQuestionToAnswer() {
     return this.questionsService.getQuestions().pipe(
       tap(quests => console.log(quests))
-    ) // this.collection(ref => ref.limit(10)).valueChanges();
+    ); // this.collection(ref => ref.limit(10)).valueChanges();
   }
 
   public loadQuestions() {
@@ -58,7 +58,19 @@ export class AnswersService {
 
     initQuestions.forEach(subject => {
       const { questions, subjectId } = subject;
-      questions.forEach(question => this.questionsService.saveQuestion({subjectId, ...question}) );
+      questions.map(question => {
+        const { options } = question;
+        const optionsId = options.map(opt => {
+          const answerId = this.db.createId();
+          return {answerId, ...opt};
+        });
+
+        const ret = {...question, options: optionsId};
+        console.log(ret);
+        return ret;
+      })
+      .forEach(question => this.questionsService.saveQuestion({subjectId, ...question}) );
+      
     });
   }
 }

@@ -21,7 +21,9 @@ export class AnswersPage {
 
   formatOptions(options) {
     console.log(options);
-    return options.map(opt => ({ label: opt.description, value: opt.answerId }));
+    const optret = options.map(opt => ({ label: opt.description, value: opt.answerId }));
+    console.log('respostas: ', optret);
+    return optret;
   }
 
   loadQuestions() {
